@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="page__bd">
+    <view wx:for='{{questionList}}' wx:key='id' wx:for-item='questionItem' class="weui-panel weui-panel_access">
+        <view wx:if='{{questionItem.classification}}' class="weui-panel__hd">{{questionItem.classification}}</view>
+        <view wx:for='{{questionItem.showMore ? questionItem.list : questionItem.descList}}' wx:key='title' wx:for-item='contentItem' class="weui-panel__bd">
+            <view bindtap='goInfo' data-id='{{contentItem.id}}' class="weui-media-box weui-media-box_text">
+                <view class="weui-media-box__title weui-media-box__title_in-text">{{contentItem.title}}</view>
+                <view class="weui-media-box__desc">{{contentItem.content}}</view>
+                <view class="weui-media-box__info">
+                    <view class="weui-media-box__info__meta">{{contentItem.userName}}</view>
+                    <view class="weui-media-box__info__meta">{{contentItem.createTime}}</view>
+                    <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{contentItem.extra}}</view>
+                </view>
+            </view>
+        </view>
+        <view bindtap='onShowMore' data-id='{{questionItem.id}}' wx:if='{{questionItem.list.length > 2}}' class="weui-panel__ft">
+            <view class="weui-cell weui-cell_access weui-cell_link">
+                <view wx:if='{{questionItem.descList}}' class="weui-cell__bd">{{questionItem.showMore ? '收起' : '加载更多'}}</view>
+                <view class="{{questionItem.showMore ? 'arrow arrowTop' : 'arrow arrowBottom'}}"></view>
+            </view>
+        </view>
+    </view>
+  </view>
+</view>

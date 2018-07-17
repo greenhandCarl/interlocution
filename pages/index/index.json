@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "提问列表",
+  "usingComponents": {
+    "i-drawer": "../../iview-weapp/drawer/index"
+  }
+}
