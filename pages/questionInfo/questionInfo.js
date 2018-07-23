@@ -11,6 +11,7 @@ Page({
     current: '',
     visible1: false,
     fakerFocus: true,
+    inputShow: false,
     answerList: [
       {
         username: '用户12138',
@@ -24,7 +25,12 @@ Page({
         answer: '这个问题其实非常简单解决，选择一款搜索引擎，把问题输入进去，按回车，就会看到很多答案了。',
         createTime: '2018-07-19',
         extra: '其他信息',
-        operateLeft: 400
+        operateLeft: 400,
+        commentList: [
+          { username1: '用户huangkai', username2: '', content: '我觉着你说的不对' },
+          { username1: '用户12138', username2: '用户huangkai', content: '先问是不是，在问为什么' },
+          { username1: 'yonghuzj', username2: '', content: '楼上二位不要在争论了' }
+        ]
       },
       {
         username: '用户12140',
@@ -40,7 +46,9 @@ Page({
         extra: '其他信息',
         operateLeft: 400
       }
-    ]
+    ],
+    agreeList: [],
+    
   },
 
   /**
@@ -161,7 +169,7 @@ Page({
     }
     this.setData({answerList})
   },
-  operateShadeTap: function (e) {
+  hideOperateShade: function (e) {
     const index = e.currentTarget.dataset.index
     const { answerList } = this.data
     if (!answerList[index]['operateLeft']) {
@@ -169,11 +177,17 @@ Page({
     }
     this.setData({ answerList })
   },
+  operateShadeTap: function (e) {
+    this.hideOperateShade(e)
+  },
   agreeTap: function (e) {
-    this.setData({fakerFocus: true})
-    console.log('1')
+    this.hideOperateShade(e)
   },
   commentTap: function (e) {
-    console.log(2)
+    this.hideOperateShade(e)
+    this.setData({ inputShow: true })
+  },
+  onconfirm: function (e) {
+    const value = e.target.value
   }
 })

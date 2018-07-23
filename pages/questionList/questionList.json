@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "提问列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "i-drawer": "../../iview-weapp/drawer/index",
+    "i-button": "../../iview-weapp/button/index",
+    "i-spin": "../../iview-weapp/spin/index",
+    "i-grid-item": "../../iview-weapp/grid-item/index",
+    "i-icon": "../../iview-weapp/icon/index"
+  }
+}

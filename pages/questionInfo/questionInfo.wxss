@@ -186,29 +186,76 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 40rpx;
+  height: 120rpx;
   width: 100vw;
+  padding-top: 16rpx;
+  padding-left: 24rpx;
+  line-height: 100rpx;
+  border: 2rpx solid #cacaca;
   z-index: 1;
-  background-color: #fff;
-  padding: 20rpx;
-  padding-bottom: 40rpx;
-  line-height: 80rpx;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
 }
 .keyboard-input .faker-input {
-  height: 40rpx;
-  width: 70%;
-  border: 2rpx solid #cecece;
+  height: 60rpx;
+  width: 80%;
+  padding-left: 10rpx;
+  border: 2rpx solid #ededed;
   border-radius: 6rpx;
+  background-color: #fcfcfc;
+}
+.keyboard-input .faker-input::input-placeholder{
+  font-size: 20rpx;
+  color: #cccccc;
 }
 .keyboard-input .faker-input::-webkit-input-placeholder{
-  font-size: 24rpx;
+  font-size: 20rpx;
+  color: #cccccc;
 }    /* 使用webkit内核的浏览器 */
 .keyboard-input .faker-input:-moz-input-placeholder{
-  font-size: 24rpx;
+  font-size: 20rpx;
+  color: #cccccc;
 }                  /* Firefox版本4-18 */
 .keyboard-input .faker-input::-moz-placeholder{
-  font-size: 24rpx;
+  font-size: 20rpx;
+  color: #cccccc;
 }                  /* Firefox版本19+ */
 .keyboard-input .faker-input:-ms-input-placeholder{
   font-size: 24rpx;
+  color: #cccccc;
 }           /* IE浏览器 */
+.smile {
+  position: absolute;
+  right: 32rpx;
+  top: 16rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.comment-container {
+  margin-top: 20rpx;
+}
+.comment-list {
+  background-color: #f3f3f5;
+}
+.comment-list .comment-item {
+  font-size: 26rpx;
+  color: #676767;
+  padding: 8rpx;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+.comment-item .username {
+  color: #516590;
+}
+.comment-item .nomal {
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+.comment-item .content {
+  padding-left: 8rpx;
+}

@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/questionInfo/questionInfo",
+    "pages/questionList/questionList",
     "pages/search/search",
     "pages/reply/reply"
   ],
