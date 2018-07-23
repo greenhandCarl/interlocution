@@ -1,0 +1,4 @@
+/* pages/search/search.wxss */
+.page__hd {
+  width: 100%;
+}

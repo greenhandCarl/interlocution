@@ -1,2 +1,64 @@
 <!--pages/questionInfo.wxml-->
-<text>pages/questionInfo.wxml</text>
+<view class='container'>
+  <!-- 全局loading -->
+    <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>  
+  <!-- 全局loading -->
+  <view class='page__hd page__hd_spacing'>
+    <view class="weui-article__p">
+        由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道?   
+      <view class='answerCount'>
+        <text class='conutText'>3个回答</text>
+      </view>
+    </view>
+  </view>
+  <view class='answerTitle'>回答列表</view>
+  <view class="page__bd">
+    <view wx:key='id'  wx:for='{{answerList}}' class="weui-panel weui-panel_access">
+        <view wx:key='title' class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text">
+              <view class='tipContainer'>
+                <text class='tipUserInfo'>{{item.username}}</text>
+              </view>
+              <view class="weui-media-box__title weui-media-box__title_in-text">{{item.answer}}</view>
+              <view class="weui-media-box__info">
+                  <view class="weui-media-box__info__meta">{{item.createTime}}</view>
+                  <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.extra}}</view>
+                  <view bindtap='operateShadeTap' data-index='{{index}}' class='operate-shade' style='display: {{!item.operateLeft ? "block" : "none"}};'></view>
+                  <view class='operate-container'>
+                    <view class='operate' style='left: {{item.operateLeft}}rpx;'>
+                      <view class='agree' bindtap='agreeTap'>
+                        <i-icon type="like" size="20" color="#fff" />
+                        赞
+                      </view>
+                      <view class='comment' bindtap='commentTap'>
+                        <i-icon class='comment-icon' type="interactive" size="20" color="#fff" />
+                        评论
+                      </view>
+                    </view>
+                  </view>
+                  <image bindtap='imgtap' data-index='{{index}}'  class='comment-img' src='../../images/comment.jpg' />
+              </view>
+            </view>
+        </view>
+    </view>
+  </view>
+  <i-tab-bar class='tab-bar' color='#2d8cf0'
+ current="{{ current }}" bindchange="handleChange">
+    <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+    <i-tab-bar-item key="answer" icon="remind" current-icon="remind_fill" count="" title="回答"></i-tab-bar-item>
+  </i-tab-bar>
+  <i-modal title="编辑答案" visible="{{ visible1 }}" bind:ok="saveValue" bind:cancel="clearValue">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">
+              <textarea class="weui-textarea" value='{{wordValue}}' bindinput='onAnswerChange' placeholder="" style="height: 3.3em" />
+              <view class="weui-textarea-counter">{{wordCounts}}/200</view>
+          </view>
+      </view>
+    </view>
+  </i-modal>
+  <view class='keyboard-input'>
+    <input class='faker-input' placeholder='评论' cursor-spacing='10' focus='{{fakerFocus}}' />
+  </view>
+</view>
+

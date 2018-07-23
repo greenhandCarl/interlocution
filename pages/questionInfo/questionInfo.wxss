@@ -1,1 +1,214 @@
 /* pages/questionInfo.wxss */
+.container {
+  background-color: #f6f6f6;
+}
+.page__hd_spacing {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.weui-article__p {
+  padding: 30rpx;
+  font-size: 36rpx;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+.answerTitle {
+  width: 100vw;
+  padding: 20rpx;
+  font-size: 32rpx; 
+  min-height: 32rpx;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page__bd {
+  width:100vw;
+  padding: 8px;
+  padding-bottom: 50px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.weui-article__section {
+  padding: 10px;
+  background-color: #fff;
+}
+.btn-container{
+  width: 100%;
+}
+.weui-btn {
+  float: right;
+  margin: 15px 8px;
+}
+.weui-btn:first-child {
+  margin: 15px 8px;
+}
+.tipContainer {
+  padding-top: 2rpx;
+  padding-bottom: 2rpx;
+  min-height: 32rpx;
+  background-color: #fff; 
+}
+.sortTip {
+  float: left;
+  width: 52rpx;
+  height: 32rpx;
+  font-size:24rpx;
+  line-height: 32rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 4rpx;
+  background: -webkit-linear-gradient(90deg, rgba(255, 178, 20, 0.801), rgba(255, 203, 34, 0.801));
+  background: -o-linear-gradient(90deg, rgba(255, 178, 20, 0.801), rgba(255, 203, 34, 0.801));
+  background: -moz-linear-gradient(90deg, rgba(255, 178, 20, 0.801), rgba(255, 203, 34, 0.801));
+  background: linear-gradient(90deg, rgba(255, 177, 20, 0.925), rgba(255, 203, 34, 0.705));
+}
+.tipUserInfo {
+  height: 32rpx;
+  font-size:24rpx;
+  line-height: 32rpx;
+  color: #cecece;
+}
+.weui-media-box {
+  background-color: #fff;
+  padding: 20rpx;
+}
+.weui-media-box__title {
+  overflow: none;
+  text-overflow: clip;
+  white-space: normal;
+}
+.weui-panel {
+  background-color:#fff;
+  margin-top:10px;
+  position:relative;
+  overflow:hidden;
+}
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width:100vw;
+  height:50px;
+  box-sizing:border-box;
+  display: flex;
+  justify-content:space-around;
+  align-items:center;
+  -webkit-box-align:center;
+  background:#fff;
+  z-index: 0;
+}
+.weui-cell {
+  border-bottom: 0;
+}
+.weui-cells,.weui-cells_after-title {
+  border-bottom: 0;
+  border-color: #fff;
+}
+.answerCount {
+  font-size: 24rpx;
+  color:#cecece;
+  overflow: hidden;
+  padding-top: 10rpx; 
+}
+.conutText {
+  float: left;
+}
+.weui-media-box__info {
+  position: relative;
+  min-height: 25rpx;
+  overflow: visible;
+}
+.weui-media-box__info .comment-img{
+  position: absolute;
+  right: -36rpx;
+  bottom: -10rpx;
+  padding: 20rpx;
+  padding-right: 46rpx;
+  width: 36.6rpx;
+  height: 27rpx;
+}
+.operate-shade {
+  position: fixed;
+  display: none;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+.operate-container {
+  position: absolute;
+  bottom: -20rpx;
+  right: 60rpx;
+  width: 380rpx;
+  height: 78rpx;
+  overflow: hidden;
+}
+.operate {
+  position: absolute;
+  bottom: 0;
+  left: 380rpx;
+  width: 380rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  z-index: 3;
+  font-size: 24rpx;
+  background-color: rgba(76,81,82,1);
+  border-radius: 6rpx;
+  text-align: center;
+  transition: left 0.2s linear;
+  -moz-transition: left 0.2s linear;
+  -webkit-transition: left 0.2s linear;
+  -o-transition: left 0.2s linear;
+}
+.operate .agree,
+.operate .comment{
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 78rpx;
+  color: #fff;
+}
+.operate .agree {
+  width: 49%;
+  border-right: 1px solid rgba(71,79,78,1);
+}
+.keyboard-input {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 40rpx;
+  width: 100vw;
+  z-index: 1;
+  background-color: #fff;
+  padding: 20rpx;
+  padding-bottom: 40rpx;
+  line-height: 80rpx;
+}
+.keyboard-input .faker-input {
+  height: 40rpx;
+  width: 70%;
+  border: 2rpx solid #cecece;
+  border-radius: 6rpx;
+}
+.keyboard-input .faker-input::-webkit-input-placeholder{
+  font-size: 24rpx;
+}    /* 使用webkit内核的浏览器 */
+.keyboard-input .faker-input:-moz-input-placeholder{
+  font-size: 24rpx;
+}                  /* Firefox版本4-18 */
+.keyboard-input .faker-input::-moz-placeholder{
+  font-size: 24rpx;
+}                  /* Firefox版本19+ */
+.keyboard-input .faker-input:-ms-input-placeholder{
+  font-size: 24rpx;
+}           /* IE浏览器 */

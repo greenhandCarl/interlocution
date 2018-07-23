@@ -1,1 +1,11 @@
-{}
+{
+  "navigationBarTitleText": "问题详情",
+  "usingComponents": {
+    "i-spin": "../../iview-weapp/spin/index",
+    "i-tab-bar": "../../iview-weapp/tab-bar/index",
+    "i-tab-bar-item": "../../iview-weapp/tab-bar-item/index",
+    "i-panel": "../../iview-weapp/panel/index",
+    "i-modal": "../../iview-weapp/modal/index",
+    "i-icon": "../../iview-weapp/icon/index"
+  }
+}

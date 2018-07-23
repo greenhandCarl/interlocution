@@ -1,0 +1,23 @@
+<!--pages/reply/reply.wxml-->
+<view class='container'>
+  <view class='page__hd page__hd_spacing'>
+    <view class="weui-article__p">
+        由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道?
+    </view>
+  </view>
+  <view class='page__bd'>
+    <view class="weui-cells__title">回答:</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" value='{{wordValue}}' bindinput='onAnswerChange' placeholder="请输入文本" style="height: 3.3em" />
+                <view class="weui-textarea-counter">{{wordCounts}}/200</view>
+            </view>
+        </view>
+    </view>
+    <view class='btn-container'>
+      <button class="weui-btn mini-btn" bindtap='saveValue' type="primary" size="mini">提交回答</button>
+      <button class="weui-btn mini-btn" bindtap='clearValue' type="default" size="mini">清空回答</button>
+    </view>
+  </view>
+</view>

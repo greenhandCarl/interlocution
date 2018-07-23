@@ -1,0 +1,24 @@
+/* pages/reply/reply.wxss */
+.page__hd {
+  width: 100%;
+  padding: 20rpx;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page__bd {
+  width:100vw;
+  padding: 8px;
+  padding-bottom: 50px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.weui-btn,.weui-btn:first-child {
+  float: right;
+  margin: 15px 8px;
+}
