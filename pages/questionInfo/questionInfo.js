@@ -13,6 +13,7 @@ Page({
     visible1: false,
     fakerFocus: true,
     inputShow: false,
+    commentPlaceholder: '评论',
     offsetY: undefined,
     addComment: {
       username1: '',
@@ -27,7 +28,9 @@ Page({
         extra: '其他信息',
         operateLeft: 400,
         editing: false,
-        commentList: []
+        agreed: false,
+        commentList: [],
+        agreeList: ['用户huangkai', '用户wangzhouyong']
       },
       {
         username: '用户12139',
@@ -36,11 +39,13 @@ Page({
         extra: '其他信息',
         operateLeft: 400,
         editing: false,
+        agreed: false,
         commentList: [
           { username1: '用户huangkai', username2: '', content: '我觉着你说的不对' },
           { username1: '用户12138', username2: '用户huangkai', content: '先问是不是，在问为什么' },
           { username1: 'yonghuzj', username2: '', content: '楼上二位不要在争论了' }
-        ]
+        ],
+        agreeList: ['用户huangkai', '用户wangzhouyong']
       },
       {
         username: '用户12140',
@@ -49,7 +54,9 @@ Page({
         extra: '其他信息',
         operateLeft: 400,
         editing: false,
-        commentList: []
+        agreed: false,
+        commentList: [],
+        agreeList: []
       },
       {
         username: '用户12141',
@@ -58,10 +65,11 @@ Page({
         extra: '其他信息',
         operateLeft: 400,
         editing: false,
-        commentList: []
+        agreed: false,
+        commentList: [],
+        agreeList: []
       }
-    ],
-    agreeList: [],
+    ]
     
   },
 
@@ -173,6 +181,16 @@ Page({
       })
     }
   },
+  toHome: function (e) {
+    wx.navigateBack({
+      url: "pages/index/index"
+    })
+  },
+  toReply: function (e) {
+    wx.navigateTo({
+      url: "../reply/reply"
+    })
+  },
   imgtap: function (e) {
     const index = e.currentTarget.dataset.index
     const { answerList } = this.data
@@ -195,15 +213,31 @@ Page({
     this.hideOperateShade(e)
   },
   agreeTap: function (e) {
+    let { answerList } = this.data
+    const userInfo = app.globalData.userInfo
+    const index = e.currentTarget.dataset.index
+    answerList[index]['agreeList'].push(userInfo.nickName)
+    answerList[index]['agreed'] = true
     this.hideOperateShade(e)
+    this.setData({answerList})
+  },
+  disagreeTap: function (e) {
+    let { answerList } = this.data
+    const userInfo = app.globalData.userInfo
+    const index = e.currentTarget.dataset.index
+    answerList[index]['agreeList'].pop()
+    answerList[index]['agreed'] = false
+    this.hideOperateShade(e)
+    this.setData({ answerList })
   },
   commentTap: function (e) {
-    const { answerList } = this.data
+    let { answerList, commentPlaceholder } = this.data
     const index = e.currentTarget.dataset.index
+    commentPlaceholder = `评论${answerList[index]['username']}`
     const offsetY = e.detail.y
     answerList[index]['editing'] = true
     this.hideOperateShade(e)
-    this.setData({ inputShow: true, answerList, offsetY })
+    this.setData({ inputShow: true, answerList, offsetY, commentPlaceholder })
   },
   onconfirm: function (e) {
     const { answerList, addComment } = this.data
@@ -234,10 +268,11 @@ Page({
     // }
   },
   commentItemTap: function (e) {
-    const { answerList, addComment } = this.data
+    let { answerList, addComment, commentPlaceholder } = this.data
     const username1 = e.currentTarget.dataset.name
     const index = e.currentTarget.dataset.index
+    commentPlaceholder = `回复${username1}`
     answerList[index]['editing'] = true
-    this.setData({ inputShow: true, addComment: { ...addComment, username2: username1}})
+    this.setData({ inputShow: true, commentPlaceholder, addComment: { ...addComment, username2: username1}})
   }
 })

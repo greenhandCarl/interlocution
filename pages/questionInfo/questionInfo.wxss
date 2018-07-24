@@ -237,6 +237,14 @@
 .comment-container {
   margin-top: 20rpx;
 }
+.agree-list {
+  padding-left: 16rpx;
+  background-color: #f3f3f5;
+}
+.agree-list .agreeItem {
+  font-size: 24rpx;
+  color: #546892;
+}
 .comment-list {
   background-color: #f3f3f5;
 }
@@ -256,6 +264,17 @@
   padding-left: 10rpx;
   padding-right: 10rpx;
 }
+.comment-item .empty {
+  display: none;
+}
 .comment-item .content {
   padding-left: 8rpx;
+}
+.tab-bar {
+  width: 100vw;
+  overflow: hidden;
+}
+.bar-item {
+  float: left;
+  width: 50vw;
 }
