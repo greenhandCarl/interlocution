@@ -13,36 +13,55 @@
   </view>
   <view class='answerTitle'>回答列表</view>
   <view class="page__bd">
-    <view wx:key='id'  wx:for='{{answerList}}' class="weui-panel weui-panel_access">
+    <view
+      wx:key='id'
+      wx:for-index='answerIndex'
+      wx:for='{{answerList}}'
+      class="weui-panel weui-panel_access"
+    >
         <view wx:key='title' class="weui-panel__bd">
             <view class="weui-media-box weui-media-box_text">
               <view class='tipContainer'>
                 <text class='tipUserInfo'>{{item.username}}</text>
               </view>
               <view class="weui-media-box__title weui-media-box__title_in-text">{{item.answer}}</view>
-              <view class="weui-media-box__info">
+              <view id='{{item.username}}' class="weui-media-box__info">
                   <view class="weui-media-box__info__meta">{{item.createTime}}</view>
                   <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.extra}}</view>
-                  <view bindtap='operateShadeTap' data-index='{{index}}' class='operate-shade' style='display: {{!item.operateLeft ? "block" : "none"}};'></view>
+                  <view bindtap='operateShadeTap' data-index='{{answerIndex}}' class='operate-shade' style='display: {{!item.operateLeft ? "block" : "none"}};'></view>
                   <view class='operate-container'>
                     <view class='operate' style='left: {{item.operateLeft}}rpx;'>
-                      <view class='agree' data-index='{{index}}' bindtap='agreeTap'>
+                      <view class='agree' data-index='{{answerIndex}}' bindtap='agreeTap'>
                         <i-icon type="like" size="20" color="#fff" />
                         赞
                       </view>
-                      <view class='comment' data-index='{{index}}' bindtap='commentTap'>
+                      <view class='comment' data-index='{{answerIndex}}' bindtap='commentTap'>
                         <i-icon class='comment-icon' type="interactive" size="20" color="#fff" />
                         评论
                       </view>
                     </view>
                   </view>
-                  <image bindtap='imgtap' data-index='{{index}}'  class='comment-img' src='../../images/comment.jpg' />
+                  <image bindtap='imgtap' data-index='{{answerIndex}}'  class='comment-img' src='../../images/comment.jpg' />
               </view>
               <view class='comment-container'>
                 <view class='agree-list'></view>
                 <view class='comment-list'>
-                  <view class='comment-item' wx:for-item='commentItem' wx:key='{{index}}' wx:for='{{item.commentList}}'>
-                     <span class='username'>{{commentItem.username1}}</span><span class='{{commentItem.username2 && "nomal"}}'>{{commentItem.username2 && '回复'}}</span> <span class='username'>{{commentItem.username2}}</span>:<span class='content'>{{commentItem.content}}</span>
+                  <view
+                    class='comment-item'
+                    data-name='{{commentItem.username1}}'
+                    data-index='{{answerIndex}}'
+                    bindtap='commentItemTap'
+                    wx:for-item='commentItem'
+                    wx:for-index='commentIndex'
+                    wx:key='{{answerIndex}}'
+                    wx:for='{{item.commentList}}'
+                  >
+                    <span class='username'>{{commentItem.username1}}</span>
+                    <span class='{{commentItem.username2 && "nomal"}}'>
+                      {{commentItem.username2 && '回复'}}
+                    </span> 
+                    <span class='username'>{{commentItem.username2}}</span>
+                    :<span class='content'>{{commentItem.content}}</span>
                   </view>
                 </view>
               </view>
@@ -66,7 +85,16 @@
     </view>
   </i-modal>
   <view class='keyboard-input' wx:if='{{inputShow}}'>
-    <input class='faker-input' bindconfirm='onconfirm' placeholder='评论' cursor-spacing='8' focus='{{fakerFocus}}' />  <image class='smile' src='../../images/smile.png' />
+    <input
+      class='faker-input'
+      bindconfirm='onconfirm'
+      placeholder='评论'
+      cursor-spacing='8'
+      bindblur='onfakerinputblur'
+      focus='{{fakerFocus}}'
+      bindfocus='onfakerfocus'
+    /> 
+    <image class='smile' src='../../images/smile.png' />
   </view>
 </view>
 

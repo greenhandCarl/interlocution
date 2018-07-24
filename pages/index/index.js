@@ -41,7 +41,6 @@ Page({
             hasUserInfo: true,
             motto: '欢迎光临'
           })
-          console.log(2)
           wx.navigateTo({
             url: '../quertionList/questionList',
           })

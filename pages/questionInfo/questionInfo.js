@@ -1,4 +1,5 @@
 // pages/questionInfo.js
+const app = getApp()
 Page({
 
   /**
@@ -12,13 +13,21 @@ Page({
     visible1: false,
     fakerFocus: true,
     inputShow: false,
+    offsetY: undefined,
+    addComment: {
+      username1: '',
+      username2: '',
+      content: ''
+    },
     answerList: [
       {
         username: '用户12138',
         answer: '这个问题其实非常简单解决，选择一款搜索引擎，把问题输入进去，按回车，就会看到很多答案了。',
         createTime: '2018-07-19',
         extra: '其他信息',
-        operateLeft: 400
+        operateLeft: 400,
+        editing: false,
+        commentList: []
       },
       {
         username: '用户12139',
@@ -26,6 +35,7 @@ Page({
         createTime: '2018-07-19',
         extra: '其他信息',
         operateLeft: 400,
+        editing: false,
         commentList: [
           { username1: '用户huangkai', username2: '', content: '我觉着你说的不对' },
           { username1: '用户12138', username2: '用户huangkai', content: '先问是不是，在问为什么' },
@@ -37,14 +47,18 @@ Page({
         answer: '这个问题其实非常简单解决，选择一款搜索引擎，把问题输入进去，按回车，就会看到很多答案了。',
         createTime: '2018-07-19',
         extra: '其他信息',
-        operateLeft: 400
+        operateLeft: 400,
+        editing: false,
+        commentList: []
       },
       {
         username: '用户12141',
         answer: '这个问题其实非常简单解决，选择一款搜索引擎，把问题输入进去，按回车，就会看到很多答案了。',
         createTime: '2018-07-19',
         extra: '其他信息',
-        operateLeft: 400
+        operateLeft: 400,
+        editing: false,
+        commentList: []
       }
     ],
     agreeList: [],
@@ -184,10 +198,46 @@ Page({
     this.hideOperateShade(e)
   },
   commentTap: function (e) {
+    const { answerList } = this.data
+    const index = e.currentTarget.dataset.index
+    const offsetY = e.detail.y
+    answerList[index]['editing'] = true
     this.hideOperateShade(e)
-    this.setData({ inputShow: true })
+    this.setData({ inputShow: true, answerList, offsetY })
   },
   onconfirm: function (e) {
-    const value = e.target.value
+    const { answerList, addComment } = this.data
+    const value = e.detail.value
+    const commentList = answerList.find((item => item.editing))['commentList']
+    answerList.forEach(item => {
+      if (item.editing) {
+        item.editing = false
+      }
+    })
+    const userInfo = app.globalData.userInfo
+    addComment['content'] = value
+    addComment['username1'] = userInfo.nickName
+    commentList.push(addComment)
+    this.setData({answerList})
+  },
+  onfakerinputblur: function (e) {
+    this.setData({ inputShow: false })
+  },
+  onfakerfocus: function (e) {
+    const { offsetY } = this.data
+    const keyBoardHeight = e.detail.height
+    // if (offsetY) {
+    //   wx.pageScrollTo({
+    //     scrollTop: offsetY,
+    //     duration: 300
+    //   })
+    // }
+  },
+  commentItemTap: function (e) {
+    const { answerList, addComment } = this.data
+    const username1 = e.currentTarget.dataset.name
+    const index = e.currentTarget.dataset.index
+    answerList[index]['editing'] = true
+    this.setData({ inputShow: true, addComment: { ...addComment, username2: username1}})
   }
 })

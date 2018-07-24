@@ -10,7 +10,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "提问列表",
+    "navigationBarTitleText": "登录",
     "navigationBarTextStyle": "black"
   }
 }

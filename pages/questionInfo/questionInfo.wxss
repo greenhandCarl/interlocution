@@ -20,7 +20,7 @@
   width: 100vw;
   padding: 20rpx;
   font-size: 32rpx; 
-  min-height: 32rpx;
+  min-height: 72rpx;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
